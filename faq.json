@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "question": "How long does a residential project typically take?",
+        "answer": "A standard high-end residential project usually takes between 12 to 18 months from foundation to handover, depending on the complexity of the design and architectural finishing.",
+        "delay": "0s"
+    },
+    {
+        "id": 2,
+        "question": "Do you assist with government approvals and local permits?",
+        "answer": "Yes, we provide full support for licensing, structural approvals, and environmental clearances. Our team ensures that your project is 100% compliant with local building codes.",
+        "delay": "0.1s"
+    },
+    {
+        "id": 3,
+        "question": "Can you execute designs provided by third-party architects?",
+        "answer": "Absolutely. While we offer in-house design services, we frequently collaborate with external architects to bring their vision to life with our precision engineering and construction teams.",
+        "delay": "0.2s"
+    }
+]

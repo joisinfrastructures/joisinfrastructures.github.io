@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jois Infrastructures</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo/icon/16x16.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/logo/icon/48x48.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/logo/icon/128x128.png">
+    <meta name="description" content="Jois Infrastructures delivers world-class building construction solutions. Residential, commercial, and industrial buildings crafted to stand for generations. Building the Future.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1A1A1A',
+              'primary-container': '#2D2D2D',
+              secondary: '#666666',
+              tertiary: '#7A2E0A',
+              'tertiary-container': '#B84417',
+              'tertiary-fixed': '#FFB088',
+              'tertiary-fixed-dim': '#E85D26',
+              'on-primary': '#ffffff',
+              'on-surface': '#1A1A1A',
+              'on-surface-variant': '#555555',
+              surface: '#FAFAFA',
+              'surface-container': '#F2F2F2',
+              'surface-container-low': '#F5F5F5',
+              'surface-container-lowest': '#ffffff',
+              'surface-container-high': '#EBEBEB',
+              'surface-dim': '#E0E0E0',
+              outline: '#999999',
+              'outline-variant': '#D0D0D0',
+              'primary-fixed': '#FFE0D0',
+              'primary-fixed-dim': '#FFB088',
+            },
+            fontFamily: {
+              manrope: ['Manrope', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface font-inter text-on-surface overflow-x-hidden">
+
+    <!-- Hiring Banner -->
+    <div id="hiring-banner" class="sticky top-0 z-[60] isolate flex items-center gap-x-6 overflow-hidden bg-[#1A1A1A] px-6 py-2.5 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10 sm:px-3.5 sm:before:flex-1 transition-all duration-300">
+        <div aria-hidden="true" class="absolute top-1/2 left-[max(-7rem,calc(50%-52rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl">
+            <div style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)" class="aspect-[577/310] w-[36rem] bg-gradient-to-r from-[#E85D26] to-[#FFB088] opacity-30"></div>
+        </div>
+        <div aria-hidden="true" class="absolute top-1/2 left-[max(45rem,calc(50%+8rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl">
+            <div style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)" class="aspect-[577/310] w-[36rem] bg-gradient-to-r from-[#E85D26] to-[#FFB088] opacity-30"></div>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p class="text-sm/6 text-gray-100">
+                <strong class="font-semibold text-[#E85D26]">We're Hiring</strong><svg viewBox="0 0 2 2" aria-hidden="true" class="mx-2 inline size-0.5 fill-current"><circle r="1" cx="1" cy="1" /></svg>Currently looking for talented professionals to join our growing team.
+            </p>
+            <a href="https://forms.gle/A2gCQMMworoh1FsA7" target="_blank" rel="noopener noreferrer" class="flex-none rounded-full bg-[#E85D26] px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-[#d14e1c] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E85D26]">Apply Now <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="flex flex-1 justify-end">
+            <button type="button" id="dismiss-banner" class="-m-3 p-3 focus-visible:-outline-offset-4">
+                <span class="sr-only">Dismiss</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5 text-gray-400 hover:text-white transition-colors">
+                    <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-[95%] xl:max-w-[98%] mx-auto px-4 lg:px-6">
+            <div class="flex items-center justify-between h-24">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logo/Transprnt.png" alt="Jois Infrastructures" class="h-14 md:h-20 w-auto">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="nav-link text-sm font-medium tracking-widest uppercase">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium tracking-widest uppercase">About Us</a>
+                    <a href="#services" class="nav-link text-sm font-medium tracking-widest uppercase">Services</a>
+                    <a href="#gallery" class="nav-link text-sm font-medium tracking-widest uppercase">Gallery</a>
+                    <a href="#testimonials" class="nav-link text-sm font-medium tracking-widest uppercase">Testimonials</a>
+                    <a href="#contact" class="nav-link text-sm font-medium tracking-widest uppercase">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2">
+                    <span class="block w-6 h-0.5 bg-primary transition-all duration-300"></span>
+                    <span class="block w-6 h-0.5 bg-primary transition-all duration-300"></span>
+                    <span class="block w-4 h-0.5 bg-primary transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl">
+            <div class="px-6 py-8 flex flex-col gap-4">
+                <a href="#home" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">Home</a>
+                <a href="#about" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">About Us</a>
+                <a href="#services" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">Services</a>
+                <a href="#gallery" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">Gallery</a>
+                <a href="#testimonials" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">Testimonials</a>
+                <a href="#contact" class="mobile-nav-link text-sm font-medium tracking-widest uppercase py-3">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[500px] md:min-h-screen flex items-center overflow-hidden bg-[#0A0F1A]">
+        <!-- Blueprint Grid Background -->
+        <div class="absolute inset-0 w-full h-full opacity-20" style="background-image: radial-gradient(circle, #00e5ff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <!-- Floor Plan Overlay -->
+        <div class="absolute left-[45%] right-0 top-28 bottom-0 flex items-center justify-center opacity-30 md:opacity-40 lg:opacity-60 xl:opacity-70 pointer-events-none">
+            <svg class="w-full h-full cad-drawing" viewBox="-10 -5 860 620" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <!-- Outer Walls -->
+                <path d="M50 50 L750 50 L750 550 L50 550 Z" stroke="#E85D26" stroke-width="6" class="cad-exterior" />
+                <path d="M60 60 L740 60 L740 540 L60 540 Z" stroke="#E85D26" stroke-width="2" class="cad-exterior-inner" />
+                
+                <!-- Interior Walls -->
+                <path d="M400 60 L400 540" stroke="#E85D26" stroke-width="4" class="cad-interior-1" />
+                <path d="M60 300 L400 300" stroke="#E85D26" stroke-width="4" class="cad-interior-2" />
+                <path d="M400 250 L740 250" stroke="#E85D26" stroke-width="4" class="cad-interior-3" />
+                
+                <!-- Room Highlights (Brand Accent) -->
+                <rect x="50" y="50" width="350" height="250" fill="#00e5ff" opacity="0" class="cad-room-highlight cad-highlight-1" />
+                <rect x="402" y="50" width="348" height="200" fill="#00e5ff" opacity="0" class="cad-room-highlight cad-highlight-2" />
+                <rect x="50" y="300" width="350" height="250" fill="#00e5ff" opacity="0" class="cad-room-highlight cad-highlight-3" />
+                <rect x="402" y="252" width="348" height="298" fill="#00e5ff" opacity="0" class="cad-room-highlight cad-highlight-4" />
+                
+                <!-- Furniture Outlines -->
+                <!-- Master Bed -->
+                <rect x="80" y="80" width="100" height="120" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <path d="M 80 120 L 180 120" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <rect x="90" y="90" width="35" height="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" rx="3" class="cad-furniture" />
+                <rect x="135" y="90" width="35" height="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" rx="3" class="cad-furniture" />
+                
+                <!-- Master Nightstands & Lights (With gaps) -->
+                <rect x="60" y="85" width="15" height="30" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="67.5" cy="100" r="5" stroke="#E85D26" stroke-width="1.5" fill="none" class="cad-furniture" />
+                <rect x="185" y="85" width="15" height="30" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="192.5" cy="100" r="5" stroke="#E85D26" stroke-width="1.5" fill="none" class="cad-furniture" />
+
+                <!-- Master Writing Table & Chair -->
+                <rect x="370" y="100" width="30" height="80" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="350" cy="140" r="10" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" fill="rgba(255,255,255,0.1)" />
+
+                <!-- Bedroom Single Bed & Pillow -->
+                <rect x="80" y="330" width="60" height="120" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <path d="M 80 370 L 140 370" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <rect x="95" y="340" width="30" height="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" rx="3" class="cad-furniture" />
+                
+                <!-- Bedroom Nightstand & Light on Right (With gap) -->
+                <rect x="145" y="335" width="15" height="30" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="152.5" cy="350" r="5" stroke="#E85D26" stroke-width="1.5" fill="none" class="cad-furniture" />
+
+                <!-- Bedroom Single Sofa (Armchair) -->
+                <rect x="350" y="330" width="35" height="35" rx="4" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" fill="none" />
+                <rect x="355" y="335" width="25" height="25" rx="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" class="cad-furniture" fill="rgba(255,255,255,0.1)" />
+
+                <!-- Sofa & Coffee Table (Living Room) -->
+                <path d="M 680 460 L 500 460 L 500 360 L 540 360 L 540 420 L 680 420 Z" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="590" cy="360" r="25" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                
+                <!-- TV & Media Console -->
+                <rect x="530" y="254" width="140" height="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <rect x="550" y="260" width="100" height="8" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="rgba(255,255,255,0.1)" class="cad-furniture" />
+                <!-- Kitchen Stove Counter (Stuck to Outside Wall) -->
+                <rect x="480" y="60" width="180" height="50" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <!-- 4 Stove Burners -->
+                <circle cx="520" cy="75" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="520" cy="95" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="550" cy="75" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <circle cx="550" cy="95" r="8" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                
+                <!-- Refrigerator -->
+                <rect x="690" y="60" width="50" height="50" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <path d="M 715 60 L 715 110" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                
+                <!-- Sink Counter -->
+                <rect x="700" y="140" width="40" height="100" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+                <rect x="710" y="160" width="20" height="40" stroke="rgba(255,255,255,0.4)" stroke-width="2" rx="4" class="cad-furniture" />
+                <circle cx="715" cy="180" r="2" stroke="rgba(255,255,255,0.4)" stroke-width="2" class="cad-furniture" />
+
+                <!-- Windows -->
+                <rect x="150" y="45" width="100" height="20" stroke="#ffffff" stroke-width="2" fill="#0A0F1A" class="cad-window" />
+                <rect x="550" y="45" width="100" height="20" stroke="#ffffff" stroke-width="2" fill="#0A0F1A" class="cad-window" />
+                <rect x="45" y="200" width="20" height="100" stroke="#ffffff" stroke-width="2" fill="#0A0F1A" class="cad-window" />
+                <rect x="735" y="350" width="20" height="100" stroke="#ffffff" stroke-width="2" fill="#0A0F1A" class="cad-window" />
+                
+                <!-- Doors (Arcs) -->
+                <path d="M300 300 A50 50 0 0 1 350 250 L350 300 Z" stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="5 5" class="cad-door" />
+                <path d="M400 150 A50 50 0 0 0 450 100 L400 100 Z" stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="5 5" class="cad-door" />
+                <path d="M400 400 A50 50 0 0 1 450 450 L400 450 Z" stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="5 5" class="cad-door" />
+                
+                <!-- Title Block -->
+                <path d="M 500 480 L 740 480 L 740 540 L 500 540 Z" stroke="#E85D26" stroke-width="2" class="cad-title-block" />
+                <path d="M 500 510 L 740 510" stroke="#E85D26" stroke-width="2" class="cad-title-block" />
+                <path d="M 620 510 L 620 540" stroke="#E85D26" stroke-width="2" class="cad-title-block" />
+                <text x="510" y="500" fill="#ffffff" class="font-manrope cad-text" font-size="14" letter-spacing="2">PROJECT: JOIS HQ</text>
+                <text x="510" y="530" fill="#ffffff" class="font-manrope cad-text" font-size="12">SCALE: 1:100</text>
+                <text x="630" y="530" fill="#ffffff" class="font-manrope cad-text" font-size="12">DATE: 2020</text>
+
+                <!-- Text Labels -->
+                <text x="225" y="160" fill="#ffffff" class="font-manrope cad-text font-bold" font-size="24" text-anchor="middle" letter-spacing="4">MASTER BED</text>
+                <text x="225" y="185" fill="#E85D26" class="font-manrope cad-text" font-size="14" text-anchor="middle">3400 x 2400</text>
+                
+                <text x="570" y="210" fill="#ffffff" class="font-manrope cad-text font-bold" font-size="24" text-anchor="middle" letter-spacing="4">KITCHEN</text>
+                <text x="570" y="235" fill="#E85D26" class="font-manrope cad-text" font-size="14" text-anchor="middle">2800 x 2400</text>
+                
+                <text x="225" y="400" fill="#ffffff" class="font-manrope cad-text font-bold" font-size="24" text-anchor="middle" letter-spacing="4">BEDROOM</text>
+                <text x="225" y="425" fill="#E85D26" class="font-manrope cad-text" font-size="14" text-anchor="middle">3200 x 2600</text>
+                
+                <text x="600" y="300" fill="#ffffff" class="font-manrope cad-text font-bold" font-size="24" text-anchor="middle" letter-spacing="6">LIVING</text>
+                <text x="600" y="325" fill="#E85D26" class="font-manrope cad-text" font-size="14" text-anchor="middle">4600 x 3000</text>
+                
+                <!-- Horizontal Dimensions (Top) -->
+                <path d="M50 30 L750 30" stroke="#ffffff" stroke-width="1" class="cad-dim-line" />
+                <path d="M50 25 L50 35" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M750 25 L750 35" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M400 25 L400 35" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M45 35 L55 25" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M745 35 L755 25" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M395 35 L405 25" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <text x="225" y="20" fill="#00e5ff" class="font-manrope cad-text" font-size="12" text-anchor="middle">5600 mm</text>
+                <text x="575" y="20" fill="#00e5ff" class="font-manrope cad-text" font-size="12" text-anchor="middle">6400 mm</text>
+
+                <!-- Vertical Dimensions (Right Side) -->
+                <path d="M770 50 L770 550" stroke="#ffffff" stroke-width="1" class="cad-dim-line" />
+                <path d="M765 50 L775 50" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M765 550 L775 550" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M765 250 L775 250" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <!-- Architectural Diagonal Tick Marks (Vertical) -->
+                <path d="M765 45 L775 55" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M765 545 L775 555" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <path d="M765 245 L775 255" stroke="#ffffff" stroke-width="2" class="cad-dim-line" />
+                <text x="800" y="155" fill="#00e5ff" class="font-manrope cad-text" font-size="12" text-anchor="middle" transform="rotate(90, 790, 155)">3200 mm</text>
+                <text x="800" y="405" fill="#00e5ff" class="font-manrope cad-text" font-size="12" text-anchor="middle" transform="rotate(90, 790, 405)">4800 mm</text>
+
+                <!-- Floating Crosshair Cursor -->
+                <g class="cad-cursor" stroke="#00e5ff" stroke-width="1.5">
+                    <line x1="-15" y1="0" x2="15" y2="0" />
+                    <line x1="0" y1="-15" x2="0" y2="15" />
+                    <circle cx="0" cy="0" r="3" fill="#E85D26" stroke="none" />
+                </g>
+            </svg>
+        </div>
+        
+        <!-- Gradient Overlay for Readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0F1A] via-[#0A0F1A]/95 to-transparent w-full md:w-3/4 lg:w-4/5 pointer-events-none z-0"></div>
+        <div class="relative z-10 w-full px-4 md:px-8 lg:px-12 pt-32 md:pt-40 lg:pt-52 pb-32 md:pb-40">
+            <div class="max-w-3xl text-left">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-sm tracking-[0.3em] uppercase mb-6">Building the Future</p>
+                <h1 class="reveal-up font-manrope font-800 text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight mb-8" style="animation-delay:0.15s">
+                    Premium Buildings<br>Crafted to <span class="text-tertiary-fixed-dim">Perfection.</span>
+                </h1>
+                <p class="reveal-up text-primary-fixed-dim text-lg md:text-xl leading-relaxed mb-10 max-w-xl" style="animation-delay:0.3s">
+                    From blueprint to final brushstroke — we handle construction, design, and renovation so you don't have to.
+                </p>
+                <div class="reveal-up flex flex-wrap gap-4" style="animation-delay:0.45s">
+                    <a href="#services" class="cta-primary px-8 py-4 rounded-md font-manrope font-600 text-sm tracking-wider uppercase">Explore Services</a>
+                    <a href="#contact" class="cta-secondary px-8 py-4 rounded-md font-manrope font-600 text-sm tracking-wider uppercase">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY JOIS? SECTION (Core Values) -->
+    <section id="why-jois" class="py-16 md:py-24 bg-[#0A0F1A] overflow-hidden relative text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div class="max-w-2xl">
+                    <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">Core Values</p>
+                    <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight mb-4">Why Choose <span class="text-tertiary-fixed-dim">Jois?</span></h2>
+                    <p class="reveal-up text-gray-400 text-lg">We don't just build structures; we build legacies. Our approach is rooted in four non-negotiable principles.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1: Safety -->
+                <div class="value-card reveal-up p-10 bg-white/5 border border-white/10 rounded-md shadow-none hover:shadow-2xl hover:border-tertiary-fixed-dim/40 transition-all group overflow-hidden relative">
+                    <span class="value-number absolute -top-8 -right-4 font-manrope font-800 text-9xl text-white/5 group-hover:text-tertiary-fixed-dim/10 transition-colors">01</span>
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6">gpp_maybe</span>
+                    <h3 class="font-manrope font-700 text-xl mb-4 text-white">Uncompromising Safety</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">Prioritizing a zero-incident culture with rigorous site inspections and premium safety protocols for every worker and client.</p>
+                </div>
+                <!-- Value 2: Sustainability -->
+                <div class="value-card reveal-up p-10 bg-white/5 border border-white/10 rounded-md shadow-none hover:shadow-2xl hover:border-tertiary-fixed-dim/40 transition-all group overflow-hidden relative" style="animation-delay: 0.1s">
+                    <span class="value-number absolute -top-8 -right-4 font-manrope font-800 text-9xl text-white/5 group-hover:text-tertiary-fixed-dim/10 transition-colors">02</span>
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6">eco</span>
+                    <h3 class="font-manrope font-700 text-xl mb-4 text-white">Sustainable Future</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">Implementing eco-friendly materials and waste-reduction practices to minimize our environmental footprint for generations to come.</p>
+                </div>
+                <!-- Value 3: Precision -->
+                <div class="value-card reveal-up p-10 bg-white/5 border border-white/10 rounded-md shadow-none hover:shadow-2xl hover:border-tertiary-fixed-dim/40 transition-all group overflow-hidden relative" style="animation-delay: 0.2s">
+                    <span class="value-number absolute -top-8 -right-4 font-manrope font-800 text-9xl text-white/5 group-hover:text-tertiary-fixed-dim/10 transition-colors">03</span>
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6">precision_manufacturing</span>
+                    <h3 class="font-manrope font-700 text-xl mb-4 text-white">Precision Engineering</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">Leveraging advanced CAD modeling and structural integrity checks to ensure every millimeter aligns with your architectural vision.</p>
+                </div>
+                <!-- Value 4: Transparency -->
+                <div class="value-card reveal-up p-10 bg-white/5 border border-white/10 rounded-md shadow-none hover:shadow-2xl hover:border-tertiary-fixed-dim/40 transition-all group overflow-hidden relative" style="animation-delay: 0.3s">
+                    <span class="value-number absolute -top-8 -right-4 font-manrope font-800 text-9xl text-white/5 group-hover:text-tertiary-fixed-dim/10 transition-colors">04</span>
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6">account_balance_wallet</span>
+                    <h3 class="font-manrope font-700 text-xl mb-4 text-white">Total Transparency</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">Clear milestones, upfront budgeting, and no hidden costs. We maintain an open channel with you from ground-breaking to handover.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-8 md:py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-stretch">
+                <div class="flex flex-col">
+                    <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">About Us</p>
+                    <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight leading-tight mb-8">Our <span class="text-tertiary-fixed-dim">Journey</span></h2>
+                    <p class="reveal-up text-on-surface-variant text-lg leading-relaxed mb-6">Jois Infrastructures (Est. 2020) is a multidisciplinary firm dedicated to excellence in civil construction, renovation, and interior design. With half a decade of expertise, we transform residential and commercial spaces through a unique blend of structural integrity and aesthetic innovation.</p>
+                    <p class="reveal-up text-on-surface-variant leading-relaxed mb-10">We provide comprehensive, end-to-end project management—bridging the gap between engineering and design. From ground-up construction to interior makeovers, our team ensures every project is defined by quality craftsmanship, on-time delivery, and a commitment to exceeding client expectations.</p>
+                    <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">engineering</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Multidisciplinary</h4>
+                            <p class="text-on-surface-variant text-xs">Construction · Renovation · Interiors</p>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">handshake</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Client Focused</h4>
+                            <p class="text-on-surface-variant text-xs">Quality · Timely · Transparent</p>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">hub</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Design-Build</h4>
+                            <p class="text-on-surface-variant text-xs">Concept to Completion</p>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">diversity_3</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Expert Team</h4>
+                            <p class="text-on-surface-variant text-xs">Engineers · Architects · Designers</p>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">psychology_alt</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Smart Innovation</h4>
+                            <p class="text-on-surface-variant text-xs">Smart Home & IOT Ready Designs</p>
+                        </div>
+                        <div class="bg-surface-container-lowest p-6 rounded-md">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">support_agent</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Reliable Aftercare</h4>
+                            <p class="text-on-surface-variant text-xs">Dedicated support beyond handover</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-up h-full bg-black rounded-md overflow-hidden shadow-2xl">
+                    <img src="/images/logo/about.jpeg" alt="Jois Infrastructures logo" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+            <!-- Integrated Stats Block -->
+            <div class="mt-6 pt-4 flex flex-col items-center">
+                <!-- Divider -->
+                <div class="max-w-5xl w-full mb-6"><hr class="border-gray-300"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 w-full">
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">calendar_month</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="2020">2000</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Established</p>
+                    </div>
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">work_history</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="5">0</span><span class="font-manrope font-800 text-3xl md:text-4xl text-tertiary-fixed-dim group-hover:text-white/80 transition-colors duration-300">+</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Years Experience</p>
+                    </div>
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">domain</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="150">0</span><span class="font-manrope font-800 text-3xl md:text-4xl text-tertiary-fixed-dim group-hover:text-white/80 transition-colors duration-300">+</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Projects Delivered</p>
+                    </div>
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">groups</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="120">0</span><span class="font-manrope font-800 text-3xl md:text-4xl text-tertiary-fixed-dim group-hover:text-white/80 transition-colors duration-300">+</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Happy Clients</p>
+                    </div>
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">straighten</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="50">0</span><span class="font-manrope font-800 text-3xl md:text-4xl text-tertiary-fixed-dim group-hover:text-white/80 transition-colors duration-300">K</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Sq.Ft. Designed</p>
+                    </div>
+                    <div class="stat-card bg-white border border-gray-200 rounded-lg p-8 text-center flex flex-col justify-center items-center group cursor-default transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-[#E85D26] hover:border-[#E85D26]">
+                        <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-3 group-hover:text-white/80 transition-colors duration-300">thumb_up</span>
+                        <div class="mb-2"><span class="counter font-manrope font-800 text-3xl md:text-4xl text-primary group-hover:text-white transition-colors duration-300" data-target="98">0</span><span class="font-manrope font-800 text-3xl md:text-4xl text-tertiary-fixed-dim group-hover:text-white/80 transition-colors duration-300">%</span></div>
+                        <p class="text-on-surface-variant group-hover:text-white/90 font-600 text-xs tracking-[0.2em] uppercase transition-colors duration-300">Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-8 md:py-12 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">Services</p>
+                <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight mb-4">What We <span class="text-tertiary-fixed-dim">Offer</span></h2>
+                <p class="reveal-up text-gray-400 max-w-2xl mx-auto">From initial concept to final execution, we craft spaces that are functional, beautiful, and tailored to your lifestyle and vision.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">space_dashboard</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Space Planning</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Strategic layout optimization that maximizes every square foot — ensuring seamless flow, comfort, and functionality across all rooms and zones.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">design_services</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Design Concepts</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Bespoke design themes and mood boards that capture your personality — from modern minimalism to warm contemporary and everything in between.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">chair</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Furniture Selection</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Curated furniture sourcing and custom pieces that blend aesthetics with ergonomics — handpicked to complement your space, style, and budget.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">light_mode</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Lighting Plans</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Layered lighting design combining ambient, task, and accent lighting to set the perfect mood, enhance textures, and elevate every corner of your space.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">palette</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Color & Material Choices</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Expert color palettes and material selections — from wall finishes and flooring to fabrics and countertops — creating cohesive, visually stunning interiors.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">view_in_ar</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">3D Visuals</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Photorealistic 3D renderings and walkthroughs that let you experience your redesigned space before a single element is placed — no surprises, just clarity.</p>
+                </div>
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">construction</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Renovations</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">Complete interior renovations and remodelling — from kitchen and bathroom makeovers to full-home transformations that breathe new life into existing spaces.</p>
+                </div>
+                <!-- Home Automation Card -->
+                <div class="service-card reveal-up bg-white/5 p-8 rounded-md group hover:bg-white/10 transition-all duration-500">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-4xl mb-6 group-hover:text-tertiary-fixed transition-colors">smart_toy</span>
+                    <h3 class="font-manrope font-700 text-xl mb-3 group-hover:text-tertiary-fixed-dim transition-colors">Home Automation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 group-hover:text-gray-200 transition-colors">Smart lighting, voice-controlled appliances, security systems, CCTV, automated blinds, and full IoT integration — making your space intelligent and future-ready.</p>
+                    <a href="https://joistech.in" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-tertiary-fixed-dim text-xs font-manrope font-600 tracking-wider uppercase hover:gap-2 transition-all">
+                        More Details <span class="material-icons-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-8 md:py-12 bg-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
+                <div>
+                    <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">
+                        Our Portfolio
+                    </p>
+                    <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight mb-4">
+                        Featured <span class="text-tertiary-fixed-dim">Projects</span>
+                    </h2>
+                    <p class="reveal-up text-gray-600 max-w-2xl">
+                        A visual collection of our most recent works — each project crafted with precision, purpose, and uncompromising quality.
+                    </p>
+                </div>
+                <a href="all_projects.html" class="hidden md:inline-flex items-center gap-2 mt-6 md:mt-0 text-tertiary-fixed-dim hover:text-primary transition-colors font-medium">
+                    View All Projects
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Expanding Gallery Grid -->
+            <div 
+                id="project-gallery-grid" 
+                class="gallery-container flex items-center gap-4 md:gap-5 h-[420px] w-full overflow-x-auto pb-4 snap-x snap-mandatory"
+                role="list"
+                aria-label="Project gallery"
+            >
+                <!-- Skeleton Loaders -->
+                <div class="skeleton-loader flex gap-4 md:gap-5 w-full" aria-hidden="true">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+            
+            <!-- Mobile Scroll Indicators -->
+            <div class="flex justify-center gap-2 mt-6 md:hidden" id="gallery-scroll-indicators"></div>
+            
+            <!-- Mobile button -->
+            <div class="flex justify-center mt-8 md:hidden">
+                <a href="all_projects.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-medium text-sm">
+                    View All Projects
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team" class="py-8 md:py-12 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">Our People</p>
+                <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight mb-4">The Minds Behind Every <span class="text-tertiary-fixed-dim">Structure</span></h2>
+                <p class="reveal-up text-gray-400 max-w-2xl mx-auto">A team of dedicated engineers, architects, and project managers committed to delivering excellence in every build.</p>
+            </div>
+            <div id="team-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team members loaded dynamically from team.json -->
+                <!-- Join Team Card (always last) -->
+                <div class="reveal-up group">
+                    <div class="flex flex-col items-center justify-center rounded-md bg-white/5 p-8 text-center h-72 border border-tertiary-fixed-dim/30">
+                        <div class="w-14 h-14 rounded-full border-2 border-dashed border-tertiary-fixed-dim flex items-center justify-center mb-4">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl">person_add</span>
+                        </div>
+                        <h3 class="font-manrope font-700 text-lg text-white mb-2">Join Our Team</h3>
+                        <p class="text-primary-fixed-dim text-xs leading-relaxed mb-4">We're looking for talented engineers, architects, and project managers.</p>
+                        <a href="https://forms.gle/A2gCQMMworoh1FsA7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-tertiary-fixed-dim text-primary px-5 py-2.5 rounded-md font-manrope font-600 text-xs tracking-wider uppercase hover:bg-white transition-colors">
+                            Apply Now <span class="material-icons-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <h3 class="font-manrope font-700 text-lg mt-5">Careers</h3>
+                    <p class="text-gray-400 text-sm">Open Positions Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider between Team and Testimonials -->
+    <div class="bg-primary">
+        <div class="max-w-5xl mx-auto"><hr class="border-white/25"></div>
+    </div>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="py-8 md:py-12 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5"><div class="absolute top-20 left-10 w-96 h-96 border border-white rounded-full"></div><div class="absolute bottom-10 right-20 w-72 h-72 border border-white rounded-full"></div></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">Client Voices</p>
+                <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight text-white mb-4">Precision is Our <span class="text-tertiary-fixed-dim">Legacy</span></h2>
+                <div class="reveal-up flex items-center justify-center gap-3 mt-6">
+                    <div class="flex gap-1">
+                        <span class="text-tertiary-fixed-dim text-2xl">★</span><span class="text-tertiary-fixed-dim text-2xl">★</span><span class="text-tertiary-fixed-dim text-2xl">★</span><span class="text-tertiary-fixed-dim text-2xl">★</span><span class="text-tertiary-fixed-dim text-2xl">★</span>
+                    </div>
+                    <span class="text-white font-manrope font-700 text-2xl">4.9</span>
+                    <span class="text-primary-fixed-dim text-sm">Aggregate Score</span>
+                </div>
+            </div>
+            <!-- Scroll Controls -->
+            <div class="reveal-up flex items-center justify-between mb-8">
+                <p class="text-primary-fixed-dim text-sm" id="review-count"></p>
+                <div class="flex gap-3">
+                    <button id="scroll-left" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                        <span class="material-icons-outlined text-lg">chevron_left</span>
+                    </button>
+                    <button id="scroll-right" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                        <span class="material-icons-outlined text-lg">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Scrollable Reviews Container -->
+            <div id="reviews-container" class="flex gap-6 overflow-x-auto pb-4 scroll-smooth testimonial-scroll">
+                <!-- Cards injected dynamically from reviews.json -->
+            </div>
+            <!-- Awards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                <div class="reveal-up text-center p-6 bg-white/5 backdrop-blur rounded-md">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">emoji_events</span>
+                    <p class="text-white font-manrope font-700 text-sm">Construction Excellence 2023</p>
+                    <p class="text-primary-fixed-dim text-xs">Best Builder Award</p>
+                </div>
+                <div class="reveal-up text-center p-6 bg-white/5 backdrop-blur rounded-md">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">eco</span>
+                    <p class="text-white font-manrope font-700 text-sm">Green Building</p>
+                    <p class="text-primary-fixed-dim text-xs">IGBC Certified</p>
+                </div>
+                <div class="reveal-up text-center p-6 bg-white/5 backdrop-blur rounded-md">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim text-3xl mb-3">shield</span>
+                    <p class="text-white font-manrope font-700 text-sm">Safety Excellence</p>
+                    <p class="text-primary-fixed-dim text-xs">Platinum Status 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (Accordion) -->
+    <section id="faq" class="py-16 md:py-24 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">FAQ</p>
+                <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight mb-4">Common <span class="text-tertiary-fixed-dim">Questions</span></h2>
+                <p class="reveal-up text-on-surface-variant">Everything you need to know about starting your project with Jois Infrastructures.</p>
+            </div>
+            
+            <div id="faq-accordion-container" class="space-y-4">
+                <!-- FAQ Items loaded dynamically from faq.json -->
+                <div class="flex justify-center p-12">
+                    <div class="w-8 h-8 border-4 border-tertiary-fixed-dim border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider between FAQ and Contact -->
+    <div class="bg-gray-100">
+        <div class="max-w-5xl mx-auto"><hr class="border-gray-300"></div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="w-full scroll-mt-24 py-8 md:py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="reveal-up text-tertiary-fixed-dim font-manrope text-xs tracking-[0.3em] uppercase mb-4">Get In Touch</p>
+                <h2 class="reveal-up font-manrope font-800 text-3xl md:text-5xl tracking-tight">Let's Build Something <span class="text-tertiary-fixed-dim">Extraordinary</span></h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+                <!-- Contact Form (LEFT) -->
+                <div class="reveal-up">
+                    <form id="contact-form" class="bg-surface-container-lowest p-8 md:p-10 rounded-md space-y-6 h-full">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-manrope font-600 tracking-wider uppercase text-on-surface-variant mb-2">Full Name</label>
+                                <input type="text" id="fullName" required class="form-input w-full px-4 py-3 bg-surface-container-low rounded-md text-sm outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-manrope font-600 tracking-wider uppercase text-on-surface-variant mb-2">Email</label>
+                                <input type="email" id="email" required class="form-input w-full px-4 py-3 bg-surface-container-low rounded-md text-sm outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-manrope font-600 tracking-wider uppercase text-on-surface-variant mb-2">Company</label>
+                            <input type="text" id="company" class="form-input w-full px-4 py-3 bg-surface-container-low rounded-md text-sm outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-manrope font-600 tracking-wider uppercase text-on-surface-variant mb-2">Project Type</label>
+                            <select id="projectType" class="form-input w-full px-4 py-3 bg-surface-container-low rounded-md text-sm outline-none text-on-surface-variant">
+                                <option value="">Select a project type</option>
+                                <option>Residential Building</option>
+                                <option>Commercial Building</option>
+                                <option>Industrial Facility</option>
+                                <option>Home Automation</option>
+                                <option>Renovation & Remodelling</option>
+                                <option>Interior Finishing</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-manrope font-600 tracking-wider uppercase text-on-surface-variant mb-2">Message</label>
+                            <textarea id="message" rows="5" required class="form-input w-full px-4 py-3 bg-surface-container-low rounded-md text-sm outline-none resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="cta-primary w-full py-4 rounded-md font-manrope font-600 text-sm tracking-wider uppercase flex items-center justify-center gap-2">
+                            Send Message <span class="material-icons-outlined text-lg">send</span>
+                        </button>
+                        <div id="form-success" class="hidden text-center p-4 bg-green-50 rounded-md">
+                            <p class="text-green-800 font-manrope font-600 text-sm">Message sent successfully! We'll get back to you shortly.</p>
+                        </div>
+                    </form>
+                </div>
+                <!-- Map + Info Cards (RIGHT) -->
+                <div class="flex flex-col gap-6">
+                    <!-- Google Map (fills remaining height) -->
+                    <div class="reveal-up rounded-md overflow-hidden flex-1 min-h-[280px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7745.686908404913!2d75.57325710263163!3d13.908303678344716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbba9005e524d55%3A0x43668e6f985fd80!2sJois%20Infrastructures!5e0!3m2!1sen!2sin!4v1775038788747!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <!-- Info Cards Below Map -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="reveal-up bg-surface-container-lowest p-5 rounded-md flex flex-col h-full">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-2">apartment</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Corporate Office</h4>
+                            <p class="text-on-surface-variant text-xs leading-relaxed">Jois Infrastructures, Urgadur, Shivamogga, Karnataka 577203</p>
+                        </div>
+                        <div class="reveal-up bg-surface-container-lowest p-5 rounded-md flex flex-col h-full">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-2">phone</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Call Us</h4>
+                            <p class="text-on-surface-variant text-xs leading-relaxed">+91 9663835823<br>Mon - Sat 9:00 | 18:00</p>
+                        </div>
+                        <div class="reveal-up bg-surface-container-lowest p-5 rounded-md flex flex-col h-full">
+                            <span class="material-icons-outlined text-tertiary-fixed-dim text-2xl mb-2">email</span>
+                            <h4 class="font-manrope font-700 text-sm mb-1">Email Us</h4>
+                            <p class="text-on-surface-variant text-xs leading-relaxed break-all"><a href="mailto:joisinfrastructures@gmail.com" class="hover:text-tertiary-fixed-dim transition-colors">joisinfrastructures@gmail.com</a><br>Response within 24 hrs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-12 mb-12">
+                <div class="md:col-span-5 flex flex-col items-start">
+                    <div class="h-9 md:h-11 aspect-[4.6/1] overflow-hidden mb-4 transition-transform duration-500 hover:scale-110">
+                        <img src="images/logo/footer.png" alt="Jois Infrastructures" class="h-full w-full object-cover object-center filter brightness-125 drop-shadow-[0_4px_20px_rgba(232,93,38,0.2)]">
+                    </div>
+                    <p class="text-primary-fixed-dim text-sm leading-relaxed max-w-md">Building the Future. Crafting premium residential, commercial, and industrial buildings that stand the test of time.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-manrope font-700 text-xs tracking-[0.2em] uppercase mb-4">Quick Links</h4>
+                    <ul class="space-y-2"><li><a href="#home" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Home</a></li><li><a href="#about" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">About Us</a></li><li><a href="#services" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Services</a></li><li><a href="#gallery" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Gallery</a></li></ul>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-manrope font-700 text-xs tracking-[0.2em] uppercase mb-4">Legal</h4>
+                    <ul class="space-y-2"><li><a href="privacy.html" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Privacy Policy</a></li><li><a href="terms.html" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Terms of Service</a></li><li><a href="#contact" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">Contact Us</a></li><li><a href="#about" class="text-primary-fixed-dim text-sm hover:text-tertiary-fixed-dim transition-colors">About Us</a></li></ul>
+                </div>
+                <div class="md:col-span-3">
+                    <h4 class="text-white font-manrope font-700 text-xs tracking-[0.2em] uppercase mb-4">Stay Updated</h4>
+                    <p class="text-primary-fixed-dim text-sm mb-4">Subscribe for insights on modern construction.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-3 bg-primary-container rounded-l-md text-sm text-white placeholder-primary-fixed-dim outline-none">
+                        <button class="px-4 py-3 bg-tertiary-fixed-dim rounded-r-md text-primary font-600 text-sm">→</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-primary-fixed-dim text-xs">© 2026 Jois Infrastructures | Building the Future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

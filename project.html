@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Jois Infrastructures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1A1A1A',
+                        'primary-container': '#2D2D2D',
+                        'primary-fixed-dim': '#FFB088',
+                        'tertiary-fixed': '#E85D26',
+                        'tertiary-fixed-dim': '#E85D26',
+                        'surface': '#0f1117',
+                        'surface-container-low': '#18181B',
+                        'surface-container-lowest': '#09090B',
+                        'on-surface': '#e3e3e8',
+                        'on-surface-variant': '#8a8a94',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; } 
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
+        /* Ensure images of any dimension display properly */
+        .masonry-item img, .masonry-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Custom Project Lightbox */
+        #project-lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.96); z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        #project-lightbox.active { opacity: 1; pointer-events: all; }
+        #project-lightbox img, #project-lightbox video {
+            max-width: min(90vw, 1200px);
+            max-height: 85vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        #project-lightbox-close {
+            position: absolute; top: 20px; right: 20px; color: white; cursor: pointer;
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.1); border-radius: 50%; transition: background 0.3s;
+            z-index: 10;
+        }
+        #project-lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+        /* Lightbox navigation arrows */
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; color: white; cursor: pointer; transition: all 0.3s; z-index: 10;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-nav.disabled { opacity: 0.2; pointer-events: none; }
+        #lightbox-prev { left: 20px; }
+        #lightbox-next { right: 20px; }
+
+        /* Lightbox counter */
+        #lightbox-counter {
+            position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.7); font-family: 'Manrope', sans-serif;
+            font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; z-index: 10;
+        }
+
+        @media (max-width: 640px) {
+            .lightbox-nav { width: 40px; height: 40px; }
+            #lightbox-prev { left: 10px; }
+            #lightbox-next { right: 10px; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logo/Transprnt.png" alt="Jois Infrastructures" class="h-10 md:h-12 w-auto">
+                </a>
+                <a href="index.html#gallery" class="hidden md:flex items-center gap-2 text-primary font-manrope font-600 text-sm tracking-wider uppercase hover:text-tertiary-fixed transition-colors">
+                    <span class="material-icons-outlined text-sm">arrow_back</span> Back to Gallery
+                </a>
+                <button class="md:hidden text-primary mt-1" onclick="window.location.href='index.html#gallery'">
+                    <span class="material-icons-outlined">arrow_back</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LOADING STATE -->
+    <div id="loading" class="min-h-screen flex items-center justify-center pt-20">
+        <span class="material-icons-outlined animate-spin text-4xl text-tertiary-fixed-dim">autorenew</span>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="error-state" class="hidden min-h-screen flex items-center justify-center pt-20">
+        <div class="text-center">
+            <h2 class="font-manrope font-800 text-3xl mb-4 text-white">Project Not Found</h2>
+            <a href="index.html#gallery" class="text-tertiary-fixed-dim hover:underline">Return to Gallery</a>
+        </div>
+    </div>
+
+    <!-- PROJECT CONTENT -->
+    <main id="project-content" class="hidden pt-20 pb-24 md:pb-32">
+        <!-- Hero Section -->
+        <div class="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] mb-12 lg:mb-20">
+            <img id="project-cover" src="" alt="Cover" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full p-6 lg:p-12 max-w-7xl mx-auto">
+                <span id="project-category" class="bg-primary/80 backdrop-blur text-tertiary-fixed-dim text-xs font-manrope font-700 px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block"></span>
+                <h1 id="project-title" class="font-manrope font-800 text-4xl md:text-6xl text-white mb-2 leading-tight"></h1>
+                <p id="project-location" class="text-on-surface-variant flex items-center gap-2 text-lg">
+                    <span class="material-icons-outlined text-tertiary-fixed-dim">location_on</span> <span id="loc-text"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="font-manrope font-700 text-2xl text-white">Project Gallery</h3>
+                <p class="text-on-surface-variant text-sm"><span id="media-count">0</span> items</p>
+            </div>
+            
+            <div id="media-grid" class="masonry-grid">
+                <!-- Media items injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- LIGHTBOX with prev/next navigation -->
+    <div id="project-lightbox">
+        <div id="project-lightbox-close"><span class="material-icons-outlined">close</span></div>
+        <button id="lightbox-prev" class="lightbox-nav"><span class="material-icons-outlined">chevron_left</span></button>
+        <button id="lightbox-next" class="lightbox-nav"><span class="material-icons-outlined">chevron_right</span></button>
+        <div id="lightbox-counter"></div>
+        <div id="lightbox-content"></div>
+    </div>
+
+    <script>
+        let currentMediaList = [];
+        let currentMediaIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (!projectId) {
+                showError();
+                return;
+            }
+
+            try {
+                const res = await fetch('projects.json');
+                const projects = await res.json();
+                const project = projects.find(p => p.id === projectId);
+
+                if (!project) {
+                    showError();
+                    return;
+                }
+
+                // Store media list for lightbox navigation
+                currentMediaList = project.media;
+
+                // Populate UI
+                document.getElementById('project-cover').src = project.cover;
+                document.getElementById('project-title').textContent = project.name;
+                document.getElementById('project-category').textContent = project.category;
+                document.getElementById('loc-text').textContent = project.location;
+                document.getElementById('media-count').textContent = project.media.length;
+                document.title = `${project.name} | JoisInfrastructure`;
+
+                // Build Grid
+                const grid = document.getElementById('media-grid');
+                project.media.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'masonry-item rounded-lg overflow-hidden relative cursor-pointer group bg-surface-container-low';
+                    div.style.animation = `fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s both`;
+
+                    if (item.type === 'video') {
+                        div.innerHTML = `
+                            <video src="${item.src}" class="group-hover:scale-[1.03] transition-transform duration-500" loop muted autoplay playsinline loading="lazy"></video>
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 pointer-events-none"></div>
+                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur rounded-full w-8 h-8 flex items-center justify-center text-white pointer-events-none">
+                                <span class="material-icons-outlined text-sm">play_arrow</span>
+                            </div>
+                        `;
+                    } else {
+                        div.innerHTML = `
+                            <img src="${item.src}" alt="Project photo ${index + 1}" loading="lazy" class="group-hover:scale-[1.03] transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 pointer-events-none"></div>
+                        `;
+                    }
+
+                    // Click to open lightbox at this index
+                    div.addEventListener('click', () => openLightbox(index));
+                    grid.appendChild(div);
+                });
+
+                // Show content
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('project-content').classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                showError();
+            }
+        });
+
+        function showError() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error-state').classList.remove('hidden');
+        }
+
+        // ===== LIGHTBOX with prev/next =====
+        const lightbox = document.getElementById('project-lightbox');
+        const lbContent = document.getElementById('lightbox-content');
+        const lbCounter = document.getElementById('lightbox-counter');
+        const lbPrev = document.getElementById('lightbox-prev');
+        const lbNext = document.getElementById('lightbox-next');
+
+        function openLightbox(index) {
+            currentMediaIndex = index;
+            renderLightboxItem();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function renderLightboxItem() {
+            const item = currentMediaList[currentMediaIndex];
+            // Stop any playing video before switching
+            const oldVid = lbContent.querySelector('video');
+            if (oldVid) oldVid.pause();
+
+            lbContent.innerHTML = '';
+            if (item.type === 'video') {
+                lbContent.innerHTML = `<video src="${item.src}" controls autoplay loop style="max-width: min(90vw, 1200px); max-height: 85vh; border-radius: 8px;"></video>`;
+            } else {
+                lbContent.innerHTML = `<img src="${item.src}" alt="Photo ${currentMediaIndex + 1}" style="max-width: min(90vw, 1200px); max-height: 85vh; border-radius: 8px; object-fit: contain;">`;
+            }
+
+            // Update counter
+            lbCounter.textContent = `${currentMediaIndex + 1} / ${currentMediaList.length}`;
+
+            // Update arrow states
+            lbPrev.classList.toggle('disabled', currentMediaIndex === 0);
+            lbNext.classList.toggle('disabled', currentMediaIndex === currentMediaList.length - 1);
+        }
+
+        function navigateLightbox(direction) {
+            const newIndex = currentMediaIndex + direction;
+            if (newIndex >= 0 && newIndex < currentMediaList.length) {
+                currentMediaIndex = newIndex;
+                renderLightboxItem();
+            }
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            const vid = lbContent.querySelector('video');
+            if (vid) vid.pause();
+            setTimeout(() => lbContent.innerHTML = '', 300);
+        }
+
+        // Event listeners
+        document.getElementById('project-lightbox-close').addEventListener('click', closeLightbox);
+        lbPrev.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(-1); });
+        lbNext.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(1); });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+        lightbox.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(diff) > 60) {
+                navigateLightbox(diff > 0 ? -1 : 1);
+            }
+        });
+    </script>
+</body>
+</html>

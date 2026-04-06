@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Anil Jois",
+        "role": "Founder & Chief Architect",
+        "about": "Leads innovative architectural designs and shapes the company's strategy with a commitment to quality and sustainability.",
+        "image": "images/team/anil_jois.webp",
+        "linkedin": "#",
+        "email": "anilk.smg@gmail.com"
+    },
+    {
+        "name": "Vijay Jois",
+        "role": "Managing Director",
+        "about": "Drives the company's vision with a strong focus on growth, efficiency, and business excellence.",
+        "image": "images/team/vijay_jois.webp",
+        "linkedin": "#",
+        "email": "akshayk.smg@gmail.com"
+    },
+    {
+        "name": "Akshay Jois",
+        "role": "Director",
+        "about": "Akshay contributes to strategic growth and oversees operations to ensure continued success and development.",
+        "image": "images/team/akshay_jois.webp",
+        "linkedin": "#",
+        "email": "akshayk.smg@gmail.com"
+    },
+    {
+        "name": "Shree Varsha Jois",
+        "role": "Interior Designer",
+        "about": "Creates elegant, functional spaces that blend creativity with client needs and modern aesthetics.",
+        "image": "images/team/varsha_jois.webp",
+        "linkedin": "#",
+        "email": "varsharjois@gmail.com"
+    },
+    {
+        "name": "Swathi Jois",
+        "role": "Accounts Manager",
+        "about": " Swathi ensures accurate financial management, streamlined records, and full compliance for smooth operations.",
+        "image": "images/team/swathi_jois.webp",
+        "linkedin": "#",
+        "email": "malaliswathi@gmail.com"
+    }
+]
+

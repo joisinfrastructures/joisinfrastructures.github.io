@@ -1,0 +1,182 @@
+[
+    {
+        "id": "adhvaita",
+        "name": "Adhvaita Residency",
+        "location": "Navanagara, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Adhvaita/Advaitha 2.jpeg",
+        "thumbnail": "images/projects/thumbnails/adhvaita.webp",
+        "coverOptimized": "images/projects/covers/adhvaita.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBQCdASoUABkAPzmIu1avKKWjsBgIAeAnCUAWc2v4BaqHY6fFlLPkuetPRS+PbaFGwAD8ioClkpYn5U8PkhtCH/vvcHJI0nujbReMGgGSIIzI1w8OcxSYdZKFtucM581dAPddU5yi+azvAqnDp9pXKqH3oO83LdxafosnX/HNdjNuao6hOfVhL9JMop6+N9oAAA==",
+        "dominantColor": "#72664f",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/1.png"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/2.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/3.png"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/Advaitha 1.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/Advaitha 2.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/living.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/mb.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Adhvaita/vd.png"
+            }
+        ]
+    },
+    {
+        "id": "akhilesh",
+        "name": "Akhilesh Residency",
+        "location": "Chalukya Nagara, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Akhilesh/chalukya nagaram.jpg",
+        "thumbnail": "images/projects/thumbnails/akhilesh.webp",
+        "coverOptimized": "images/projects/covers/akhilesh.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADQBACdASoUABkAPzmQulgvKaUjqAqp4CcJQBe6Ab1S5XxQd6M9j9fh7wwBtPbbAAD+Bd18l7ddoOA7uzEEq1oi7bbvJH4cI0m67tW9coqkcSXlJygi529AzZVvfWkcGWDKtN946LbuoLuP15XEsYREhXXEv0IF6kVPYW9BAEnAY0VUraPTwdc7TWbWwOOYUFVVYVl3W6nmv28vAN9DkIh2JAAAAA==",
+        "dominantColor": "#59594e",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Akhilesh/chalukya nagaram.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Akhilesh/sukanya ele.Denoiser.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Akhilesh/sukanya ele.jpg"
+            }
+        ]
+    },
+    {
+        "id": "brindavana",
+        "name": "Brindavana Residency",
+        "location": "Urgadur, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Brindavana/amar elevation_6 - Photo.jpg",
+        "thumbnail": "images/projects/thumbnails/brindavana.webp",
+        "coverOptimized": "images/projects/covers/brindavana.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAQBQCdASoUABkAPzmOuVcvKaUjqA1R4CcJYwDGQBCUsiZRehvbVgAvhLLOHLSFfiAAAPffQYLWKQn7v46iUPqRrFxA6eOijbKhL2VA3ObLbCH8gZsxKdYKp2olPpq9SlpNWNhukuQ1aqldpAvBhalJRbnSdsa8QKQdh9nRE539UENAGJullmMdRjefpoNzi9Ovh8VQjDr3lk9T92eFjjJsJFg4AA==",
+        "dominantColor": "#636863",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Brindavana/amar elevation_6 - Photo.jpg"
+            }
+        ]
+    },
+    {
+        "id": "elu-koti",
+        "name": "Elu Koti Residency",
+        "location": "Urgadur, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Elu Koti/sridevi 12 - Photo_6 - Photo.jpg",
+        "thumbnail": "images/projects/thumbnails/elu-koti.webp",
+        "coverOptimized": "images/projects/covers/elu-koti.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBACdASoUABkAPzmQulgvKaUjqAqp4CcJZgCzgBI/JjfGBdnDEG+/M6ao7/2O2gAA8ms3VX25mb31/0YcrAuxf4ozR4UDtCB1W2TxS6ndsEjIZqGOcA7qQ/6zXtRirF8gsB0dfmJj4OS6Ki03pY5frr38Xsi+tm4wi4VaPbuqjLhOjeCodTEDE/E0uNLHyKBlWlMQuZyddm9SjzbAtshpBV1RDHQc7AAAAA==",
+        "dominantColor": "#605c4b",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Elu Koti/KITCHEN 1.png"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Elu Koti/sridevi 12 - Photo_6 - Photo.jpg"
+            }
+        ]
+    },
+    {
+        "id": "keshava",
+        "name": "Keshava Residency",
+        "location": "Urgadur, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Keshava/4.jpg",
+        "thumbnail": "images/projects/thumbnails/keshava.webp",
+        "coverOptimized": "images/projects/covers/keshava.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBACdASoUABkAPzmOv1cvKaajqAqp4CcJYwDBzAahuHHwAPimk5ZjJv2YAAD+nsWF72Zju4VySVqgPydC4cXC4I/IDj5bJa+2Z38Eu742Y6LFS/XZu8KmfMSALYf7FIZtqhSnfO2XMlZ/vHhJTqCQz9DqtYb2oQs50mPN0wmKBelHgT1/RAAA",
+        "dominantColor": "#363f2e",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Keshava/4.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Keshava/keshava.jpeg"
+            }
+        ]
+    },
+    {
+        "id": "manjunath",
+        "name": "Manjunath Residency",
+        "location": "Taralabalu Layout, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Manjunath/MANJUNATH ELE -01-01.png",
+        "thumbnail": "images/projects/thumbnails/manjunath.webp",
+        "coverOptimized": "images/projects/covers/manjunath.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBQCdASoUABkAPyl4slOuJySit/qoAcAlCWIAwcwh37mDhyJB5vn4V9dcPdv6mNgAAP7o49VZVPBHayn1pgNJ3uz/UPpFSIdA0FdPGSEKzH8BwHucZfWoguaaN2YRBUGL2IGKfL9OgJzIIqdRFVscBpR12eoiVeorMJR68zs0MopG0wI8L4HrEtoE03DkdM9TtfxSFOVRQAAA",
+        "dominantColor": "#303432",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Manjunath/MANJUNATH ELE -01-01.png"
+            }
+        ]
+    },
+    {
+        "id": "mathareeshwa",
+        "name": "Mathareeshwa Residency",
+        "location": "Gandhi Bazar, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Mathareeshwa/mathareeshwa.png",
+        "thumbnail": "images/projects/thumbnails/mathareeshwa.webp",
+        "coverOptimized": "images/projects/covers/mathareeshwa.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAAAQBQCdASoUABkAPzmQulivKaUjqAqp4CcJagC06BGUl8EAIdIA9YfSm+oH9t9KtQmgAN1bZ8pkRAp5LJdPSdGQ9PpYKIdt9rPRlaEruptuliryUKSp64vLzZsplCGZHaIwg7fMYnqLSeV6DhQrhr/ss3lVLA6FtQN+fqTcCRMjiI/5uhKVPEkOrHk9/d8K78QPqRK4LpHSZZ20Hcnfy2J+KqoaMa+Zkcl3EsypUHZHZF+/CgCyvEJHiB9m1KdOAAA=",
+        "dominantColor": "#5b6a54",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Mathareeshwa/mathareeshwa.png"
+            }
+        ]
+    },
+    {
+        "id": "mathrushree",
+        "name": "Mathrushree Residency",
+        "location": "Urgadur, Shivamogga",
+        "category": "Residential",
+        "cover": "images/projects/Mathrushree/3.jpg",
+        "thumbnail": "images/projects/thumbnails/mathrushree.webp",
+        "coverOptimized": "images/projects/covers/mathrushree.webp",
+        "blurDataUrl": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoUABkAPzmQvlevKaYjqAqp4CcJQBb3ZdUT9cO+D3aziQZ+5uNMAb/IciAA/hXF2zFrkBFdPKwzw1VL2g9lkfJmEGy53thE/fdEKhnuWGFMQPCE4eH6bI/4G5iHR4SoJGfC5LAobscUwlZRHs6wkCqrVUBSY/fxxrTrmdsRR2n7H4n4sh1xXgfawAA=",
+        "dominantColor": "#344435",
+        "media": [
+            {
+                "type": "image",
+                "src": "images/projects/Mathrushree/3.jpg"
+            }
+        ]
+    }
+]

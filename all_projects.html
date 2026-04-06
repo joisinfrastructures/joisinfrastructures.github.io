@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jois Infrastructures</title>
+    
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts (if using) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo/icon/16x16.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/logo/icon/48x48.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/logo/icon/128x128.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1A1A1A',
+              'primary-container': '#2D2D2D',
+              secondary: '#666666',
+              tertiary: '#7A2E0A',
+              'tertiary-container': '#B84417',
+              'tertiary-fixed': '#FFB088',
+              'tertiary-fixed-dim': '#E85D26',
+              'on-primary': '#ffffff',
+              'on-surface': '#1A1A1A',
+              'on-surface-variant': '#555555',
+              surface: '#FAFAFA',
+              'surface-container': '#F2F2F2',
+              'surface-container-low': '#F5F5F5',
+              'surface-container-lowest': '#ffffff',
+              'surface-container-high': '#EBEBEB',
+              'surface-dim': '#E0E0E0',
+              outline: '#999999',
+              'outline-variant': '#D0D0D0',
+              'primary-fixed': '#FFE0D0',
+              'primary-fixed-dim': '#FFB088',
+            },
+            fontFamily: {
+              manrope: ['Manrope', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    
+    <style>
+        /* ============================================
+           PROJECTS PAGE SPECIFIC STYLES
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1A1A1A;
+            color: #FAFAFA;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, .header-title {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* ============================================
+           HEADER / NAVIGATION
+           ============================================ */
+        .projects-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .projects-header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FAFAFA;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #E85D26;
+        }
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .header-title span {
+            color: #E85D26;
+        }
+
+        /* ============================================
+           PAGE HERO
+           ============================================ */
+        .page-hero {
+            padding: 8rem 1.5rem 3rem;
+            text-align: center;
+            background: linear-gradient(to bottom, #1A1A1A, #1A1A1A);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-hero h1 span {
+            color: #E85D26;
+        }
+
+        .page-hero p {
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #E85D26;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .stats-disclaimer {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #AAAAAA;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           FILTER TABS
+           ============================================ */
+        .filter-section {
+            position: sticky;
+            top: 60px;
+            z-index: 50;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid #333333;
+            background: #2D2D2D;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #AAAAAA;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover {
+            border-color: #E85D26;
+            color: #E85D26;
+        }
+
+        .filter-btn.active {
+            background: #FAFAFA;
+            border-color: #FAFAFA;
+            color: #1A1A1A;
+        }
+
+        .filter-btn .count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            margin-left: 6px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+
+        .filter-btn.active .count {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.25rem;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid #e5e5e5;
+        }
+
+        .view-btn {
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #9ca3af;
+            transition: all 0.2s;
+        }
+
+        .view-btn:hover {
+            color: #6b7280;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .view-btn.active {
+            color: #1A1A1A;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============================================
+           MASONRY GRID
+           ============================================ */
+        .gallery-section {
+            padding: 2rem 1.5rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* CSS Columns Masonry */
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+                column-gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 4;
+                column-gap: 1.5rem;
+            }
+        }
+
+        /* Grid View (alternative) */
+        .masonry-grid.grid-view {
+            column-count: unset;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid.grid-view {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid.grid-view {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.25rem;
+            }
+        }
+
+        /* ============================================
+           MASONRY ITEM / PROJECT CARD
+           ============================================ */
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e5e5e5;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (min-width: 768px) {
+            .masonry-item {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-item {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Grid view adjustments */
+        .masonry-grid.grid-view .masonry-item {
+            margin-bottom: 0;
+            aspect-ratio: 4/5;
+        }
+
+        /* Image container */
+        .masonry-image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .masonry-grid.grid-view .masonry-image-container {
+            height: 100%;
+        }
+
+        /* Blur placeholder */
+        .masonry-blur {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(20px);
+            transform: scale(1.1);
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .masonry-blur.hidden {
+            opacity: 0;
+        }
+
+        /* Main image */
+        .masonry-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .masonry-grid.grid-view .masonry-image {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .masonry-image.loaded {
+            opacity: 1;
+        }
+
+        .masonry-item:hover .masonry-image {
+            transform: scale(1.05);
+        }
+
+        /* Project overlay */
+        .masonry-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
+            background: linear-gradient(
+                to top,
+                rgba(45, 41, 38, 0.95) 0%,
+                rgba(45, 41, 38, 0.6) 40%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        /* Always show on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .masonry-overlay {
+                opacity: 1;
+                background: linear-gradient(
+                    to top,
+                    rgba(45, 41, 38, 0.9) 0%,
+                    rgba(45, 41, 38, 0.4) 50%,
+                    transparent 100%
+                );
+            }
+        }
+
+        .masonry-overlay h3 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-overlay h3 {
+                font-size: 1.125rem;
+            }
+        }
+
+        .masonry-overlay .category {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.25rem;
+        }
+
+        .masonry-overlay .location {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .masonry-overlay .location svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Image count badge */
+        .image-count {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.35rem 0.6rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 6px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            z-index: 15;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .masonry-item:hover .image-count {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (hover: none) {
+            .image-count {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .image-count svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ============================================
+           ITEM ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .masonry-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Filter transition */
+        .masonry-item.filtering-out {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .masonry-item.hidden {
+            display: none;
+        }
+
+        /* ============================================
+           LIGHTBOX
+           ============================================ */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+            max-height: 80vh;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-image.loaded {
+            opacity: 1;
+        }
+
+        .lightbox-loader {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .lightbox-loader.hidden {
+            display: none;
+        }
+
+        /* Lightbox info */
+        .lightbox-info {
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .lightbox-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .lightbox-meta {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .lightbox-counter {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.5rem;
+        }
+
+        /* Lightbox controls */
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-close svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .lightbox-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .lightbox-prev {
+            left: 1rem;
+        }
+
+        .lightbox-next {
+            right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .lightbox-prev {
+                left: 0.5rem;
+            }
+
+            .lightbox-next {
+                right: 0.5rem;
+            }
+        }
+
+        /* Thumbnail strip */
+        .lightbox-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            max-width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .lightbox-thumbnails::-webkit-scrollbar {
+            display: none;
+        }
+
+        .lightbox-thumb {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .lightbox-thumb:hover {
+            opacity: 0.8;
+        }
+
+        .lightbox-thumb.active {
+            opacity: 1;
+            border-color: white;
+        }
+
+        .lightbox-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============================================
+           LOADING STATE
+           ============================================ */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            color: #6b7280;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #E85D26;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           EMPTY STATE
+           ============================================ */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            text-align: center;
+            color: #6b7280;
+            padding: 2rem;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1A1A1A;
+        }
+
+        .empty-state p {
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-state button {
+            padding: 0.75rem 1.5rem;
+            background: #1A1A1A;
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .empty-state button:hover {
+            background: #E85D26;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .projects-footer {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background: #1A1A1A;
+            border-top: 1px solid #333333;
+        }
+
+        .footer-cta h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #FAFAFA;
+        }
+
+        .footer-cta p {
+            color: #AAAAAA;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: #FAFAFA;
+            color: #1A1A1A;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .footer-cta a:hover {
+            background: #E85D26;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           SCROLL TO TOP
+           ============================================ */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1A1A1A;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: #E85D26;
+            transform: translateY(-2px);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="projects-header" id="projects-header">
+        <div class="header-inner">
+            <a href="index.html" class="back-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            <div class="header-title">Our <span>Projects</span></div>
+            <div style="width: 120px;"></div> <!-- Spacer for centering -->
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Our <span>Projects</span></h1>
+        <p>Explore our complete portfolio of architectural works — residential homes, commercial spaces, and innovative designs crafted with precision and passion.</p>
+        
+        <div class="stats-row" id="stats-row">
+            <div class="stat-item">
+                <div class="stat-number" id="stat-projects">0</div>
+                <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="stat-images">0</div>
+                <div class="stat-label">Images</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="stat-categories">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+        
+        <div class="stats-disclaimer">
+            <p>* A carefully curated selection of our finest work, drawn from a portfolio of over 150+ completed projects.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section" id="filter-section">
+        <div class="filter-container">
+            <div id="filter-buttons">
+                <!-- Filters injected by JS -->
+            </div>
+            
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="masonry" title="Masonry View">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm10 2a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
+                    </svg>
+                </button>
+                <button class="view-btn" data-view="grid" title="Grid View">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="masonry-grid" id="masonry-grid">
+            <!-- Loading State -->
+            <div class="loading-state" id="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading projects...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="projects-footer">
+        <div class="footer-cta">
+            <h3>Have a Project in Mind?</h3>
+            <p>Let's discuss how we can bring your vision to life.</p>
+            <a href="index.html#contact">
+                Get in Touch
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:20px;height:20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        
+        <div class="lightbox-content">
+            <div class="lightbox-image-container">
+                <div class="lightbox-loader" id="lightbox-loader"></div>
+                <img src="" alt="" class="lightbox-image" id="lightbox-image">
+            </div>
+            <div class="lightbox-info">
+                <h4 class="lightbox-title" id="lightbox-title">Project Name</h4>
+                <p class="lightbox-meta" id="lightbox-meta">Category • Location</p>
+                <p class="lightbox-counter" id="lightbox-counter">1 / 5</p>
+            </div>
+            <div class="lightbox-thumbnails" id="lightbox-thumbnails">
+                <!-- Thumbnails injected by JS -->
+            </div>
+        </div>
+        
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+    (function() {
+        'use strict';
+
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const CONFIG = {
+            jsonPath: 'projects.json',
+            defaultCategory: 'All',
+            animationDelay: 0.05,
+            observerThreshold: 0.1,
+            observerRootMargin: '100px'
+        };
+
+        // ============================================
+        // STATE
+        // ============================================
+        let projects = [];
+        let allImages = [];
+        let currentFilter = 'All';
+        let currentView = 'masonry';
+        let lightboxImages = [];
+        let lightboxIndex = 0;
+
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const grid = document.getElementById('masonry-grid');
+        const loadingState = document.getElementById('loading-state');
+        const filterContainer = document.getElementById('filter-buttons');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxMeta = document.getElementById('lightbox-meta');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxThumbnails = document.getElementById('lightbox-thumbnails');
+        const lightboxLoader = document.getElementById('lightbox-loader');
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        const header = document.getElementById('projects-header');
+
+        // ============================================
+        // INTERSECTION OBSERVER FOR LAZY LOADING
+        // ============================================
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const item = entry.target;
+                    const img = item.querySelector('.masonry-image');
+                    
+                    if (img?.dataset.src) {
+                        loadImage(img);
+                    }
+                    
+                    imageObserver.unobserve(item);
+                }
+            });
+        }, {
+            threshold: CONFIG.observerThreshold,
+            rootMargin: CONFIG.observerRootMargin
+        });
+
+        // ============================================
+        // LOAD IMAGE
+        // ============================================
+        function loadImage(img) {
+            const preload = new Image();
+            
+            preload.onload = () => {
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                
+                const blur = img.parentElement.querySelector('.masonry-blur');
+                if (blur) {
+                    setTimeout(() => blur.classList.add('hidden'), 100);
+                }
+            };
+            
+            preload.onerror = () => {
+                console.warn('Failed to load:', img.dataset.src);
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+            };
+            
+            preload.src = img.dataset.src;
+        }
+
+        // ============================================
+        // CREATE MASONRY ITEM
+        // ============================================
+        function createMasonryItem(imageData, index) {
+            const item = document.createElement('div');
+            item.className = 'masonry-item';
+            item.dataset.category = imageData.category;
+            item.dataset.projectId = imageData.projectId;
+            item.dataset.imageIndex = index;
+            item.style.animationDelay = `${index * CONFIG.animationDelay}s`;
+
+            const thumbnail = imageData.thumbnail || imageData.src;
+            const blur = imageData.blurDataUrl || '';
+            const color = imageData.dominantColor || '#e5e7eb';
+
+            item.innerHTML = `
+                <div class="masonry-image-container" style="background-color: ${color}">
+                    ${blur ? 
+                        `<img src="${blur}" alt="" class="masonry-blur" aria-hidden="true">` : 
+                        `<div class="masonry-blur" style="background: ${color}"></div>`
+                    }
+                    <img 
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        data-src="${thumbnail}"
+                        alt="${imageData.name}"
+                        class="masonry-image"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                
+                <div class="image-count">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    ${imageData.totalImages}
+                </div>
+                
+                <div class="masonry-overlay">
+                    <p class="category">${imageData.category}</p>
+                    <h3>${imageData.name}</h3>
+                    <p class="location">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        ${imageData.location}
+                    </p>
+                </div>
+            `;
+
+            // Click to open lightbox
+            item.addEventListener('click', () => {
+                openLightbox(imageData.projectId, imageData.imageIndex);
+            });
+
+            return item;
+        }
+
+        // ============================================
+        // FILTER FUNCTIONS
+        // ============================================
+        function getCategories() {
+            const categories = new Set(['All']);
+            projects.forEach(p => {
+                if (p.category) categories.add(p.category);
+            });
+            return Array.from(categories);
+        }
+
+        function getCategoryCount(category) {
+            if (category === 'All') return allImages.length;
+            return allImages.filter(img => img.category === category).length;
+        }
+
+        function createFilterButtons() {
+            const categories = getCategories();
+            
+            filterContainer.innerHTML = categories.map(cat => `
+                <button class="filter-btn ${cat === 'All' ? 'active' : ''}" data-category="${cat}">
+                    ${cat}
+                    <span class="count">${getCategoryCount(cat)}</span>
+                </button>
+            `).join('');
+
+            // Add event listeners
+            filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.dataset.category;
+                    filterProjects(category);
+                    
+                    // Update active state
+                    filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        }
+
+        function filterProjects(category) {
+            currentFilter = category;
+            const items = grid.querySelectorAll('.masonry-item');
+            
+            items.forEach(item => {
+                const itemCategory = item.dataset.category;
+                const shouldShow = category === 'All' || itemCategory === category;
+                
+                if (shouldShow) {
+                    item.classList.remove('hidden', 'filtering-out');
+                    item.style.animationDelay = '0s';
+                    item.style.animation = 'none';
+                    item.offsetHeight; // Trigger reflow
+                    item.style.animation = '';
+                } else {
+                    item.classList.add('filtering-out');
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
+
+        // ============================================
+        // VIEW TOGGLE
+        // ============================================
+        function initViewToggle() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const view = btn.dataset.view;
+                    
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    if (view === 'grid') {
+                        grid.classList.add('grid-view');
+                    } else {
+                        grid.classList.remove('grid-view');
+                    }
+                    
+                    currentView = view;
+                });
+            });
+        }
+
+        // ============================================
+        // LIGHTBOX
+        // ============================================
+        function openLightbox(projectId, startIndex = 0) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project || !project.media) return;
+
+            lightboxImages = project.media.filter(m => m.type === 'image').map(m => m.src);
+            lightboxIndex = startIndex;
+
+            // Set project info
+            lightboxTitle.textContent = project.name;
+            lightboxMeta.textContent = `${project.category} • ${project.location}`;
+
+            // Create thumbnails
+            lightboxThumbnails.innerHTML = lightboxImages.map((src, i) => `
+                <div class="lightbox-thumb ${i === 0 ? 'active' : ''}" data-index="${i}">
+                    <img src="${src}" alt="Thumbnail ${i + 1}">
+                </div>
+            `).join('');
+
+            // Add thumbnail click events
+            lightboxThumbnails.querySelectorAll('.lightbox-thumb').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    goToLightboxImage(parseInt(thumb.dataset.index));
+                });
+            });
+
+            // Load selected image
+            loadLightboxImage(startIndex);
+
+            // Show lightbox
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            lightboxImage.classList.remove('loaded');
+        }
+
+        function loadLightboxImage(index) {
+            lightboxIndex = index;
+            const src = lightboxImages[index];
+
+            lightboxImage.classList.remove('loaded');
+            lightboxLoader.classList.remove('hidden');
+
+            const preload = new Image();
+            preload.onload = () => {
+                lightboxImage.src = src;
+                lightboxImage.classList.add('loaded');
+                lightboxLoader.classList.add('hidden');
+            };
+            preload.src = src;
+
+            // Update counter
+            lightboxCounter.textContent = `${index + 1} / ${lightboxImages.length}`;
+
+            // Update thumbnails
+            lightboxThumbnails.querySelectorAll('.lightbox-thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            // Scroll thumbnail into view
+            const activeThumb = lightboxThumbnails.querySelector('.lightbox-thumb.active');
+            if (activeThumb) {
+                activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+
+            // Update nav buttons
+            document.getElementById('lightbox-prev').disabled = index === 0;
+            document.getElementById('lightbox-next').disabled = index === lightboxImages.length - 1;
+        }
+
+        function goToLightboxImage(index) {
+            if (index >= 0 && index < lightboxImages.length) {
+                loadLightboxImage(index);
+            }
+        }
+
+        function initLightbox() {
+            // Close button
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+
+            // Nav buttons
+            document.getElementById('lightbox-prev').addEventListener('click', () => {
+                goToLightboxImage(lightboxIndex - 1);
+            });
+
+            document.getElementById('lightbox-next').addEventListener('click', () => {
+                goToLightboxImage(lightboxIndex + 1);
+            });
+
+            // Click outside to close
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        goToLightboxImage(lightboxIndex - 1);
+                        break;
+                    case 'ArrowRight':
+                        goToLightboxImage(lightboxIndex + 1);
+                        break;
+                }
+            });
+        }
+
+        // ============================================
+        // SCROLL EFFECTS
+        // ============================================
+        function initScrollEffects() {
+            // Header shadow
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 10);
+                scrollToTopBtn.classList.toggle('visible', window.scrollY > 500);
+            }, { passive: true });
+
+            // Scroll to top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ============================================
+        // UPDATE STATS
+        // ============================================
+        function updateStats() {
+            const totalImages = projects.reduce((sum, p) => sum + (p.media?.length || 0), 0);
+            const categories = new Set(projects.map(p => p.category).filter(Boolean));
+
+            // Animate numbers
+            animateNumber('stat-projects', projects.length);
+            animateNumber('stat-images', totalImages);
+            animateNumber('stat-categories', categories.size);
+        }
+
+        function animateNumber(elementId, target) {
+            const el = document.getElementById(elementId);
+            const duration = 1000;
+            const start = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(eased * target);
+                
+                el.textContent = current;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        async function init() {
+            try {
+                // Fetch projects
+                const response = await fetch(CONFIG.jsonPath);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                projects = await response.json();
+
+                if (!Array.isArray(projects) || projects.length === 0) {
+                    throw new Error('No projects found');
+                }
+
+                // Remove loading state
+                if (loadingState) loadingState.remove();
+
+                // Build flat array of images (all images for masonry)
+                allImages = projects.flatMap(project => {
+                    if (project.media && project.media.length > 0) {
+                        return project.media.filter(img => img.type === 'image').map((img, index) => ({
+                            projectId: project.id,
+                            name: project.name,
+                            category: project.category || 'Uncategorized',
+                            location: project.location || 'Location',
+                            src: img.src,
+                            thumbnail: index === 0 ? (project.thumbnail || project.coverOptimized || project.cover || img.src) : img.src,
+                            blurDataUrl: project.blurDataUrl,
+                            dominantColor: project.dominantColor,
+                            totalImages: project.media.length,
+                            imageIndex: index
+                        }));
+                    }
+                    return [];
+                });
+
+                // Create filter buttons
+                createFilterButtons();
+
+                // Create masonry items
+                allImages.forEach((imageData, index) => {
+                    const item = createMasonryItem(imageData, index);
+                    grid.appendChild(item);
+                    imageObserver.observe(item);
+                });
+
+                // Update stats
+                updateStats();
+
+                // Init other features
+                initViewToggle();
+                initLightbox();
+                initScrollEffects();
+
+                console.log(`✓ Loaded ${projects.length} projects`);
+
+            } catch (error) {
+                console.error('Failed to load projects:', error);
+                
+                if (loadingState) {
+                    loadingState.innerHTML = `
+                        <div class="empty-state">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                            <h3>Unable to Load Projects</h3>
+                            <p>Please check your connection and try again.</p>
+                            <button onclick="location.reload()">Refresh Page</button>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Start
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+    </script>
+</body>
+</html>
