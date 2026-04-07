@@ -594,7 +594,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     <!-- Front Face -->
                     <div class="team-card-front">
                         <div class="relative overflow-hidden rounded-md mb-5">
-                            <img src="${m.image}" alt="${m.name}" class="w-full h-72 object-cover transition-transform duration-700">
+                            <img src="${m.image}" alt="${m.name}" class="w-full h-48 sm:h-64 lg:h-72 object-cover object-top transition-transform duration-700">
                         </div>
                         <h3 class="font-manrope font-700 text-lg text-white">${m.name}</h3>
                         <p class="text-gray-400 text-sm">${m.role}</p>

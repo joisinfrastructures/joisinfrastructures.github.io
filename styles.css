@@ -852,11 +852,19 @@ html {
 }
 
 .team-card-container {
-    min-height: 400px;
+    min-height: 280px;
     height: 100%;
     cursor: default;
     position: relative;
     z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .team-card-container { min-height: 340px; }
+}
+
+@media (min-width: 1024px) {
+    .team-card-container { min-height: 400px; }
 }
 
 .flip-card-inner {
@@ -899,10 +907,14 @@ html {
     transform: rotateY(180deg);
     align-items: center;
     justify-content: center;
-    padding: 2.5rem;
+    padding: 1.5rem;
     text-align: center;
     transition: all 0.5s ease;
     z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .flip-card-back { padding: 2.5rem; }
 }
 
 /* Services-style hover for the team back face */
@@ -910,10 +922,4 @@ html {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(232, 93, 38, 0.4);
     box-shadow: 0 20px 40px rgba(232, 93, 38, 0.15);
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .team-card-container { min-height: 380px; }
-    .flip-card-back { padding: 1.5rem; }
 }
