@@ -1,18 +1,12 @@
 /* ===== CORE ANIMATIONS & GLOBAL RESETS ===== */
 html { 
-    scroll-behavior: smooth; 
     zoom: 0.8;
 }
 
-/* Scroll reveal */
+/* Scroll reveal (initial hidden state - GSAP animates inline) */
 .reveal-up {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-up.revealed {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* ===== NAVBAR ===== */
@@ -612,6 +606,18 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== HERO DEMO ANIMATION ===== */

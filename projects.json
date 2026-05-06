@@ -9,6 +9,7 @@
         "coverOptimized": "images/projects/covers/adhvaita.webp",
         "blurDataUrl": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBQCdASoUABkAPzmIu1avKKWjsBgIAeAnCUAWc2v4BaqHY6fFlLPkuetPRS+PbaFGwAD8ioClkpYn5U8PkhtCH/vvcHJI0nujbReMGgGSIIzI1w8OcxSYdZKFtucM581dAPddU5yi+azvAqnDp9pXKqH3oO83LdxafosnX/HNdjNuao6hOfVhL9JMop6+N9oAAA==",
         "dominantColor": "#72664f",
+        "model3d": "images/projects/Adhvaita/advaitha.glb",
         "media": [
             {
                 "type": "image",
@@ -79,6 +80,7 @@
         "coverOptimized": "images/projects/covers/brindavana.webp",
         "blurDataUrl": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAQBQCdASoUABkAPzmOuVcvKaUjqA1R4CcJYwDGQBCUsiZRehvbVgAvhLLOHLSFfiAAAPffQYLWKQn7v46iUPqRrFxA6eOijbKhL2VA3ObLbCH8gZsxKdYKp2olPpq9SlpNWNhukuQ1aqldpAvBhalJRbnSdsa8QKQdh9nRE539UENAGJullmMdRjefpoNzi9Ovh8VQjDr3lk9T92eFjjJsJFg4AA==",
         "dominantColor": "#636863",
+        "model3d": "images/projects/Brindavana/brindavan.glb",
         "media": [
             {
                 "type": "image",
@@ -96,6 +98,7 @@
         "coverOptimized": "images/projects/covers/elu-koti.webp",
         "blurDataUrl": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADwBACdASoUABkAPzmQulgvKaUjqAqp4CcJZgCzgBI/JjfGBdnDEG+/M6ao7/2O2gAA8ms3VX25mb31/0YcrAuxf4ozR4UDtCB1W2TxS6ndsEjIZqGOcA7qQ/6zXtRirF8gsB0dfmJj4OS6Ki03pY5frr38Xsi+tm4wi4VaPbuqjLhOjeCodTEDE/E0uNLHyKBlWlMQuZyddm9SjzbAtshpBV1RDHQc7AAAAA==",
         "dominantColor": "#605c4b",
+        "model3d": "images/projects/Elu Koti/7koti.glb",
         "media": [
             {
                 "type": "image",
@@ -117,6 +120,7 @@
         "coverOptimized": "images/projects/covers/keshava.webp",
         "blurDataUrl": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBACdASoUABkAPzmOv1cvKaajqAqp4CcJYwDBzAahuHHwAPimk5ZjJv2YAAD+nsWF72Zju4VySVqgPydC4cXC4I/IDj5bJa+2Z38Eu742Y6LFS/XZu8KmfMSALYf7FIZtqhSnfO2XMlZ/vHhJTqCQz9DqtYb2oQs50mPN0wmKBelHgT1/RAAA",
         "dominantColor": "#363f2e",
+        "model3d": "images/projects/Keshava/keshava.glb",
         "media": [
             {
                 "type": "image",
@@ -172,10 +176,15 @@
         "coverOptimized": "images/projects/covers/mathrushree.webp",
         "blurDataUrl": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoUABkAPzmQvlevKaYjqAqp4CcJQBb3ZdUT9cO+D3aziQZ+5uNMAb/IciAA/hXF2zFrkBFdPKwzw1VL2g9lkfJmEGy53thE/fdEKhnuWGFMQPCE4eH6bI/4G5iHR4SoJGfC5LAobscUwlZRHs6wkCqrVUBSY/fxxrTrmdsRR2n7H4n4sh1xXgfawAA=",
         "dominantColor": "#344435",
+        "model3d": "images/projects/Mathrushree/mathrushree.glb",
         "media": [
             {
                 "type": "image",
                 "src": "images/projects/Mathrushree/3.jpg"
+            },
+            {
+                "type": "image",
+                "src": "images/projects/Mathrushree/mathrushree (2).jpg"
             }
         ]
     }

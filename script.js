@@ -1,3 +1,27 @@
+const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 1.5
+});
+
+// Sync Lenis with GSAP ScrollTrigger
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+} else {
+    // Fallback if GSAP is not loaded
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+}
+
 // ===== HIRING BANNER =====
 const hiringBanner = document.getElementById('hiring-banner');
 const dismissBtn = document.getElementById('dismiss-banner');
@@ -34,17 +58,37 @@ if (hiringBanner && dismissBtn) {
     });
 }
 
-// ===== SCROLL REVEAL =====
-const revealElements = document.querySelectorAll('.reveal-up');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('revealed'), i * 80);
-            revealObserver.unobserve(entry.target);
+// ===== SCROLL REVEAL (Intersection Observer) =====
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    // Filter intersecting entries
+    const intersecting = entries.filter(e => e.isIntersecting);
+    intersecting.forEach((entry, index) => {
+        // Add stagger delay based on index in the current intersecting batch
+        if (!entry.target.style.transitionDelay) {
+            entry.target.style.transitionDelay = `${index * 0.1}s`;
         }
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-revealElements.forEach(el => revealObserver.observe(el));
+}, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+function initRevealAnimations() {
+    document.querySelectorAll('.reveal-up').forEach(el => {
+        revealObserver.observe(el);
+    });
+}
+// Init reveal on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRevealAnimations);
+} else {
+    initRevealAnimations();
+}
+// Helper: re-observe newly added .reveal-up elements
+function refreshScrollTrigger() {
+    document.querySelectorAll('.reveal-up:not(.visible)').forEach(el => {
+        revealObserver.observe(el);
+    });
+}
 
 // ===== FAQ ACCORDION (Enhanced for Dynamic Content) =====
 const faqContainer = document.getElementById('faq-accordion-container');
@@ -561,19 +605,18 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress';
 document.body.prepend(progressBar);
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+lenis.on('scroll', ({ progress }) => {
+    progressBar.style.width = (progress * 100) + '%';
 });
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+// ===== SMOOTH SCROLL FOR ANCHOR LINKS (Lenis) =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
+        const href = anchor.getAttribute('href');
+        const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            lenis.scrollTo(target, { offset: -80, duration: 1.2 });
         }
     });
 });
@@ -622,7 +665,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
 
         // Re-observe new elements for scroll reveal
-        grid.querySelectorAll('.reveal-up:not(.revealed)').forEach(el => revealObserver.observe(el));
+        refreshScrollTrigger();
     } catch (e) {
         console.warn('Team data unavailable:', e);
     }
@@ -755,7 +798,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
 
         // Re-observe new FAQ items for reveal effect
-        container.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+        refreshScrollTrigger();
 
     } catch (e) {
         console.warn('FAQ data unavailable:', e);
@@ -769,8 +812,8 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             const target = document.querySelector(window.location.hash);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                lenis.scrollTo(target, { offset: -80, duration: 1.4 });
             }
-        }, 400); // Give JS time to fetch and render reviews/team 
+        }, 600); // Give JS time to fetch and render reviews/team 
     }
 });

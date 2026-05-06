@@ -24,6 +24,12 @@ from PIL import Image
 import io
 from datetime import datetime
 
+try:
+    from compress_glb import compress_glb_textures
+    HAS_COMPRESS_GLB = True
+except ImportError:
+    HAS_COMPRESS_GLB = False
+
 # ============= CONFIGURATION =============
 CONFIG = {
     # Input: where your original project folders are
@@ -52,6 +58,13 @@ CONFIG = {
     
     # Supported image formats
     'image_extensions': {'.jpg', '.jpeg', '.png', '.webp', '.gif'},
+    
+    # 3D model extensions
+    'model_extensions': {'.glb', '.gltf'},
+    
+    # GLB size thresholds (bytes)
+    'glb_warn_size': 10 * 1024 * 1024,   # 10 MB - warn
+    'glb_critical_size': 25 * 1024 * 1024, # 25 MB - strongly recommend compression,
     
     # Output format
     'output_format': 'webp',  # 'webp' or 'jpg'
@@ -129,6 +142,7 @@ class ImageOptimizer:
             'original_size': 0,
             'optimized_size': 0,
         }
+        self.glb_report = []  # Track GLB files for compression report
         
     def setup_output_directories(self):
         """Create output directory structure"""
@@ -166,6 +180,77 @@ class ImageOptimizer:
         
         # Sort by name
         return sorted(images, key=lambda x: x.name.lower())
+    
+    def find_glb_model(self, folder_path):
+        """Find .glb/.gltf 3D model files in a project folder (ignoring placeholders like Duck.glb)"""
+        placeholder_names = {'duck.glb', 'duck.gltf'}  # Known placeholders to skip
+        models = []
+        
+        for file in folder_path.iterdir():
+            if file.is_file() and file.suffix.lower() in self.config['model_extensions']:
+                if file.name.lower() not in placeholder_names and not file.name.endswith('_original.glb'):
+                    models.append(file)
+        
+        if not models:
+            return None
+        
+        # Pick the original if both exist
+        originals = [m for m in models if not m.name.endswith('_compressed.glb')]
+        if originals:
+            model = sorted(originals, key=lambda x: x.name.lower())[0]
+        else:
+            model = sorted(models, key=lambda x: x.name.lower())[0]
+            
+        size_bytes = model.stat().st_size
+        size_mb = size_bytes / (1024 * 1024)
+        
+        # Build report entry
+        status = 'ok'
+        if size_bytes >= self.config['glb_critical_size']:
+            status = 'critical'
+        elif size_bytes >= self.config['glb_warn_size']:
+            status = 'warn'
+            
+        # Auto-compress if needed
+        if status in ['warn', 'critical'] and HAS_COMPRESS_GLB:
+            print(f"   ⚙️ Auto-compressing large 3D model: {model.name}...")
+            compressed_path = model.parent / f"{model.stem}_compressed.glb"
+            aggressive = status == 'critical'
+            success = compress_glb_textures(model, compressed_path, aggressive=aggressive)
+            
+            if success and compressed_path.exists():
+                new_size = compressed_path.stat().st_size
+                backup = model.parent / f"{model.stem}_original.glb"
+                if not backup.exists():
+                    shutil.copy2(model, backup)
+                shutil.move(str(compressed_path), str(model))
+                print(f"      ✓ Compressed {size_mb:.1f} MB -> {new_size / (1024*1024):.1f} MB. Original backed up to _original.glb")
+                size_bytes = new_size
+                size_mb = size_bytes / (1024 * 1024)
+                status = 'ok' # Update status since it's compressed now
+            else:
+                print(f"      ⚠️ Compression yielded no improvement or failed.")
+                if compressed_path.exists():
+                    compressed_path.unlink()
+        
+        self.glb_report.append({
+            'project': folder_path.name,
+            'file': model.name,
+            'path': str(model.relative_to(Path('.'))).replace('\\', '/'),
+            'size_bytes': size_bytes,
+            'size_mb': round(size_mb, 2),
+            'status': status,
+        })
+        
+        # Log inline
+        status_icon = {'ok': '✓', 'warn': '⚠️', 'critical': '🔴'}[status]
+        print(f"   {status_icon} 3D model: {model.name} ({size_mb:.1f} MB)")
+        if status == 'critical':
+            print(f"      >> STRONGLY recommend compression (>{self.config['glb_critical_size'] // (1024*1024)} MB)")
+        elif status == 'warn':
+            print(f"      >> Consider compression (>{self.config['glb_warn_size'] // (1024*1024)} MB)")
+        
+        return str(model.relative_to(Path('.'))).replace('\\', '/')
     
     def slugify(self, text):
         """Convert text to URL-friendly slug"""
@@ -362,6 +447,9 @@ class ImageOptimizer:
                     
         cover_path = str(cover_image.relative_to(Path('.'))).replace('\\', '/')
         
+        # Detect 3D model
+        model3d_path = self.find_glb_model(folder_path)
+        
         # Build media array (original paths - YOUR EXISTING FORMAT)
         media = []
         for img in images:
@@ -423,6 +511,10 @@ class ImageOptimizer:
             "media": media  # All original images
         }
         
+        # Add 3D model path if found
+        if model3d_path:
+            project_data["model3d"] = model3d_path
+        
         self.stats['total_images'] += len(images)
         
         print(f"   ✓ Processed successfully")
@@ -480,7 +572,7 @@ class ImageOptimizer:
         # Format for YOUR exact structure
         output_data = []
         for p in self.projects_data:
-            output_data.append({
+            entry = {
                 "id": p["id"],
                 "name": p["name"],
                 "location": p["location"],
@@ -490,8 +582,12 @@ class ImageOptimizer:
                 "coverOptimized": p["coverOptimized"],
                 "blurDataUrl": p["blurDataUrl"],
                 "dominantColor": p["dominantColor"],
-                "media": p["media"]
-            })
+            }
+            # Include model3d only if present
+            if "model3d" in p:
+                entry["model3d"] = p["model3d"]
+            entry["media"] = p["media"]
+            output_data.append(entry)
         
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=4, ensure_ascii=False)
@@ -515,6 +611,37 @@ class ImageOptimizer:
             print(f"   Optimized size: {self.format_size(self.stats['optimized_size'])}")
             print(f"   💾 Saved: {self.format_size(savings)} ({savings_percent:.1f}%)")
         
+        # GLB Report
+        if self.glb_report:
+            print("\n" + "-" * 60)
+            print("📐 3D MODEL REPORT")
+            print("-" * 60)
+            models_ok = [m for m in self.glb_report if m['status'] == 'ok']
+            models_warn = [m for m in self.glb_report if m['status'] == 'warn']
+            models_critical = [m for m in self.glb_report if m['status'] == 'critical']
+            
+            print(f"   Total 3D models: {len(self.glb_report)}")
+            total_glb_size = sum(m['size_bytes'] for m in self.glb_report)
+            print(f"   Total 3D size: {self.format_size(total_glb_size)}")
+            
+            if models_ok:
+                print(f"\n   ✓ Good ({len(models_ok)}):")
+                for m in models_ok:
+                    print(f"     {m['project']}/{m['file']} — {m['size_mb']} MB")
+            
+            if models_warn:
+                print(f"\n   ⚠️  Needs compression ({len(models_warn)}):")
+                for m in models_warn:
+                    print(f"     {m['project']}/{m['file']} — {m['size_mb']} MB")
+            
+            if models_critical:
+                print(f"\n   🔴 Urgently needs compression ({len(models_critical)}):")
+                for m in models_critical:
+                    print(f"     {m['project']}/{m['file']} — {m['size_mb']} MB")
+            
+            if models_warn or models_critical:
+                print(f"\n   >> Run: python compress_glb.py")
+        
         print("\n" + "=" * 60)
         print("✨ OPTIMIZATION COMPLETE!")
         print("=" * 60)
@@ -529,6 +656,12 @@ class ImageOptimizer:
 
 def main():
     """Entry point"""
+    # Fix console encoding for Windows to prevent UnicodeEncodeError
+    if sys.platform == 'win32':
+        import codecs
+        sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+        sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+        
     # Check if Pillow is installed
     try:
         from PIL import Image
